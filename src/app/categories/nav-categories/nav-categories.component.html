@@ -1,0 +1,31 @@
+<div class="row mb-3">
+  <div class="col-11">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ 'active disabled': url == '' }"
+          routerLink="/categories"
+          >Catégories</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ 'active disabled': url == 'scat' }"
+          routerLink="scat"
+          >Sous catégories</a
+        >
+      </li>
+      <!-- <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li> -->
+    </ul>
+  </div>
+
+  <div class="col-1">
+    <button routerLink="add" type="button" class="btn btn-success">
+      <fa-icon [icon]="faPlusSquare"></fa-icon>
+    </button>
+  </div>
+</div>

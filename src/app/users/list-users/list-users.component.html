@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-3">
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label">Recherche</label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        placeholder="Search"
+        [(ngModel)]="term"
+      />
+    </div>
+  </div>
+
+  <div class="col-3"></div>
+
+  <div class="col-5"></div>
+  <div class="col-1 pt-3">
+    <button routerLink="add" type="button" class="btn btn-success">
+      <fa-icon [icon]="faPlusSquare"></fa-icon>
+    </button>
+  </div>
+</div>
+
+<table
+  *ngIf="users"
+  class="table table-hover table-striped table-bordered mb-5"
+>
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let user of users | filter: term; let i = index"
+      [ngClass]="{ 'table-active': !(i % 2) }"
+    >
+      <td>{{ user.name }}</td>
+      <td>{{ user.telephone }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button
+          type="button"
+          [routerLink]="[user._id, 'edit']"
+          class="btn btn-outline-light m-1"
+        >
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="[user._id]"
+          class="btn btn-outline-info m-1"
+        >
+          <fa-icon [icon]="faInfoCircle"></fa-icon>
+        </button>
+        <button
+          type="button"
+          (click)="onDelete(user._id)"
+          class="btn btn-outline-danger m-1"
+        >
+          <fa-icon [icon]="faTrashAlt"></fa-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

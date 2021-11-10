@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-3">
+    <div class="form-group">
+      <label for="categorie" class="form-label">Catégorie</label>
+      <select class="form-select mb-3" id="souscategorie" [(ngModel)]="term">
+        <option [ngValue]="null" disabled>Choix du Catégorie</option>
+        <option
+          *ngFor="let categorie of categories"
+          value="{{ categorie._id }}"
+        >
+          {{ categorie.nomcategorie }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label">Recherche</label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        [(ngModel)]="termTwo"
+        placeholder="Search"
+      />
+    </div>
+  </div>
+
+  <div class="col-5"></div>
+  <div class="col-1 pt-3">
+    <button routerLink="add" type="button" class="btn btn-success">
+      <fa-icon [icon]="faPlusSquare"></fa-icon>
+    </button>
+  </div>
+</div>
+
+<table
+  *ngIf="articles"
+  class="table table-hover table-striped table-bordered mb-5"
+>
+  <thead>
+    <tr>
+      <th scope="col">Photo</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Sous Catégorie</th>
+      <th scope="col">Prix de Vente</th>
+      <th scope="col">Quantité en stock</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let article of articles | filter: term | filter: termTwo;
+        let i = index
+      "
+      [ngClass]="{ 'table-active': !(i % 2) }"
+    >
+      <td>
+        <img
+          width="70vw"
+          src="http://localhost:3000/api/articles/photos/{{
+            article.imageartpetitf
+          }}"
+        />
+      </td>
+      <th scope="row">{{ article.designation }}</th>
+      <td>{{ article.marque }}</td>
+      <td>{{ article.categorie?.nomCategorie }}</td>
+      <td>{{ article.scategorie?.nomSCategorie }}</td>
+      <td>{{ article.prixVente }}</td>
+      <td>{{ article.qteStock }}</td>
+      <td>
+        <button
+          type="button"
+          [routerLink]="[article._id, 'edit']"
+          class="btn btn-outline-dark m-1"
+        >
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="[article._id]"
+          class="btn btn-outline-info m-1"
+        >
+          <fa-icon [icon]="faInfoCircle"></fa-icon>
+        </button>
+        <button
+          type="button"
+          (click)="onDelete(article._id)"
+          class="btn btn-outline-danger m-1"
+        >
+          <fa-icon [icon]="faTrashAlt"></fa-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

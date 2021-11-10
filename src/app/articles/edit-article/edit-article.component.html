@@ -1,0 +1,173 @@
+<div class="card mb-3">
+  <h3 class="card-header">Ajouter un Article</h3>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="updateArticle()">
+      <fieldset>
+        <div class="form-group">
+          <label for="reference" class="form-label mt-4">Référence</label>
+          <input
+            type="text"
+            class="form-control"
+            id="reference"
+            formControlName="reference"
+            aria-describedby="emailHelp"
+            placeholder="Enter Référence"
+          />
+          <!-- <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            > -->
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="form-label mt-4"
+            >Designation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="designation"
+            formControlName="designation"
+            placeholder="Designation"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="form-label mt-4"
+            >Marque</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="marque"
+            formControlName="marque"
+            placeholder="Marque"
+          />
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="categorie" class="form-label mt-4">Catégorie</label>
+              <select
+                formControlName="categorie"
+                class="form-select"
+                id="categorie"
+              >
+                <option [ngValue]="null" disabled>Choix du Catégorie</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="souscategorie" class="form-label mt-4"
+                >Sous Catégorie</label
+              >
+              <select
+                formControlName="souscategorie"
+                class="form-select"
+                id="souscategorie"
+              >
+                <option [ngValue]="null" disabled>
+                  Choix du Sous Catégorie
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4"
+                >Prix d'Achat</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="PrixAchat"
+                formControlName="prixAchat"
+                placeholder="Prix d'Achat"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4"
+                >Prix de Vente</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="PrixVente"
+                formControlName="prixVente"
+                placeholder="Prix de Vente"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4"
+                >Prix Solde</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="PrixSolde"
+                formControlName="prixSolde"
+                placeholder="Prix Solde"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="caracteristiques" class="form-label mt-4"
+            >Caractéristiques</label
+          >
+          <textarea
+            class="form-control"
+            id="caracteristiques"
+            formControlName="caracteristiques"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1" class="form-label mt-4"
+            >Quantité</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="qteStock"
+            formControlName="qteStock"
+            placeholder="Quantité"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="formFile" class="form-label mt-4"
+            >Default file input example</label
+          >
+          <input class="form-control" type="file" id="formFile" />
+        </div>
+
+        <button
+          style="margin-top: 3vw; width: 100%"
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="form.invalid"
+        >
+          Modifier Article
+        </button>
+      </fieldset>
+    </form>
+  </div>
+</div>
